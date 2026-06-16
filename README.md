@@ -211,12 +211,4 @@ python tests/test_complet.py
 
 Ce projet est fourni à des fins éducatives.
 
-## 👤 Auteur
 
-Recon
-
-## 🙏 Remerciements
-
-- OpenCV pour la reconnaissance faciale
-- Cryptography pour le chiffrement AES-256
-- Tkinter pour l'interface graphique
