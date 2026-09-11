@@ -1,214 +1,222 @@
 # 🔐 Recon
 
-Recon complet de reconnaissance faciale avec chiffrement AES-256, tatouage numérique et notifications email.
+Complete facial recognition system with AES-256 encryption, digital watermarking, and email notifications.
 
-## ✨ Fonctionnalités
+## ✨ Features
 
-### 🎯 Reconnaissance Faciale
-- **Algorithme LBPH** (Local Binary Patterns Histograms)
-- **Détection optimisée** pour faible lumière (CLAHE, boost luminosité/contraste)
-- **Seuil de confiance ajustable**
-- **Entraînement automatique** du modèle
+### 🎯 Facial Recognition
+- **LBPH algorithm** (Local Binary Patterns Histograms)
+- **Optimized detection** for low-light conditions (CLAHE, brightness/contrast enhancement)
+- **Adjustable confidence threshold**
+- **Automatic model training**
 
-### 🔒 Sécurité
-- **Chiffrement AES-256** de la base de données et des images
-- **Tatouage numérique LSB** des logs d'accès
-- **Hash SHA-256** pour l'intégrité des données
-- **Conformité RGPD** (droit à l'oubli)
+### 🔒 Security
+- **AES-256 encryption** of the database and images
+- **LSB digital watermarking** of access logs
+- **SHA-256 hashing** for data integrity
+- **GDPR compliance** (right to erasure)
 
 ### 📧 Notifications
-- **Alertes email automatiques** (SMTP)
-- **Notifications configurables** (autorisé, non autorisé, imposteur)
-- **Images jointes** aux alertes
+- **Automatic email alerts** (SMTP)
+- **Configurable notifications** (authorized, unauthorized, impersonator)
+- **Images attached** to alerts
 
--### 🖥️ Interface Graphique
-- **4 onglets** : Enregistrement, Accès, Logs, Administration
-- **Surveillance en temps réel**
-- **Gestion complète des utilisateurs**
-- **Vérification d'intégrité des logs**
+### 🖥️ Graphical Interface
+- **4 tabs**: Registration, Access Control, Logs, Administration
+- **Real-time monitoring**
+- **Complete user management**
+- **Log integrity verification**
 
-## 📋 Prérequis
+## 📋 Requirements
 
 - **Python 3.8+**
-- **Webcam** (pour la capture vidéo)
+- **Webcam** (for video capture)
 - **Windows / Linux / macOS**
 
 ## 🚀 Installation
 
-### 1. Cloner ou télécharger le projet
+### 1. Clone or download the project
 
 ```bash
 cd systeme_biometrique_v2
 ```
 
-### 2. Installer les dépendances
+### 2. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-**Important**: Utilisez `opencv-contrib-python` (pas `opencv-python`) pour avoir le module LBPH.
+**Important:** Use `opencv-contrib-python` instead of `opencv-python` to enable the LBPH module.
 
-### 3. Configuration SMTP (optionnel)
+### 3. SMTP Configuration (Optional)
 
-Éditez `config/settings.py` :
+Edit `config/settings.py`:
 
 ```python
-SMTP_EMAIL = 'votre_email@gmail.com'
-SMTP_PASSWORD = 'votre_mot_de_passe_application'  # Pas votre mot de passe Gmail!
-ALERT_EMAIL = 'destinataire@example.com'
+SMTP_EMAIL = 'your_email@gmail.com'
+SMTP_PASSWORD = 'your_app_password'  # Not your Gmail password!
+ALERT_EMAIL = 'recipient@example.com'
 ```
 
-**Pour Gmail** :
-1. Activez la 2FA sur votre compte
-2. Créez un mot de passe d'application : https://myaccount.google.com → Sécurité → Mots de passe des applications
-3. Utilisez ce mot de passe (16 caractères)
+**For Gmail:**
 
-### 4. Lancer l'application
+1. Enable 2FA on your Google account.
+2. Create an App Password.
+3. Use the generated App Password instead of your regular Gmail password.
+
+### 4. Run the application
 
 ```bash
 python main.py
 ```
 
-## 📖 Guide d'utilisation
+## 📖 User Guide
 
-### Enregistrer un utilisateur
+### Register a User
 
-1. Allez dans l'onglet **📝 Enregistrement**
-2. Remplissez le formulaire (nom, code, email)
-3. Cliquez sur **Démarrer l'enregistrement**
-4. Regardez la caméra pendant la capture (50 images)
-5. Le modèle s'entraîne automatiquement
+1. Go to the **📝 Registration** tab.
+2. Fill in the form (name, user code, email).
+3. Click **Start Registration**.
+4. Look at the camera during the capture process (50 images).
+5. The model is trained automatically.
 
-### Contrôler l'accès
+### Control Access
 
-1. Allez dans l'onglet **🎥 Contrôle d'Accès**
-2. Cliquez sur **Démarrer la surveillance**
-3. Le système reconnaît automatiquement les visages
-4. Les accès sont enregistrés dans les logs
+1. Go to the **🎥 Access Control** tab.
+2. Click **Start Monitoring**.
+3. The system automatically recognizes faces.
+4. Access attempts are recorded in the logs.
 
-### Consulter les logs
+### View Access Logs
 
-1. Allez dans l'onglet **📋 Journaux d'Accès**
-2. Filtrez par résultat (tous, autorisé, non autorisé, imposteur)
-3. Cliquez sur un log pour voir l'image
-4. Vérifiez l'intégrité avec le tatouage numérique
+1. Go to the **📋 Access Logs** tab.
+2. Filter by result (all, authorized, unauthorized, impersonator).
+3. Click on a log to view the associated image.
+4. Verify log integrity using the digital watermark.
 
-### Gérer les utilisateurs
+### Manage Users
 
-1. Allez dans l'onglet **⚙️ Administration**
-2. Sélectionnez un utilisateur
-3. Autorisez/Révoquez l'accès
-4. Supprimez un utilisateur (RGPD)
+1. Go to the **⚙️ Administration** tab.
+2. Select a user.
+3. Grant or revoke access.
+4. Delete a user (GDPR).
 
-### Sécurité
+### Security Management
 
-1. **Tatouage** : Vérifiez l'intégrité des logs via les outils d'administration
-2. **SMTP** : Testez la connexion email via la configuration
-3. **Chiffrement** : Gérez le chiffrement des images via les paramètres
+1. **Watermarking:** Verify log integrity through the administration tools.
+2. **SMTP:** Test the email connection through the configuration settings.
+3. **Encryption:** Manage image encryption through the security settings.
 
 ## 🏗️ Architecture
 
-```
+```text
 systeme_biometrique_v2/
-├── core/                    # Logique métier
-│   ├── biometrie/          # Capture, détection, reconnaissance
-│   ├── database/           # Gestion base de données
-│   ├── securite/           # Chiffrement, tatouage, hash
-│   └── notifications/      # Alertes email
-├── interface/              # Interface graphique Tkinter
-├── config/                 # Configuration centralisée
-├── data/                   # Données (DB, images, logs)
-├── tests/                  # Tests automatisés
+├── core/                    # Business logic
+│   ├── biometrie/          # Capture, detection, recognition
+│   ├── database/           # Database management
+│   ├── securite/           # Encryption, watermarking, hashing
+│   └── notifications/      # Email alerts
+├── interface/              # Tkinter graphical interface
+├── config/                 # Centralized configuration
+├── data/                   # Data (database, images, logs)
+├── tests/                  # Automated tests
 ├── docs/                   # Documentation
-└── main.py                 # Point d'entrée
+└── main.py                 # Entry point
 ```
 
-## 🔧 Configuration avancée
+## 🔧 Advanced Configuration
 
-### Ajuster le seuil de reconnaissance
+### Adjust the Recognition Threshold
 
-Éditez `config/settings.py` :
+Edit `config/settings.py`:
 
 ```python
-RECOGNITION_THRESHOLD = 0.35  # Plus bas = plus permissif
+RECOGNITION_THRESHOLD = 0.35  # Lower = more permissive
 ```
 
-### Améliorer la détection en faible lumière
+### Improve Low-Light Detection
 
 ```python
-CLAHE_CLIP_LIMIT = 4.0       # Égalisation d'histogramme
-BRIGHTNESS_BOOST = 1.5       # Augmentation luminosité
-CONTRAST_BOOST = 1.3         # Augmentation contraste
+CLAHE_CLIP_LIMIT = 4.0       # Histogram equalization
+BRIGHTNESS_BOOST = 1.5       # Brightness enhancement
+CONTRAST_BOOST = 1.3         # Contrast enhancement
 ```
 
-### Nombre d'images par enregistrement
+### Number of Images per Registration
 
 ```python
-NUM_IMAGES_ENROLL = 50       # 50 images par défaut
+NUM_IMAGES_ENROLL = 50       # 50 images by default
 ```
 
-## 🔐 Sécurité et RGPD
+## 🔐 Security and GDPR
 
-### Données collectées
-- Images de visages (chiffrées AES-256)
-- Nom, code utilisateur, email
-- Logs d'accès avec horodatage
+### Collected Data
+
+- Facial images (encrypted with AES-256)
+- User name, user code, and email
+- Access logs with timestamps
 
 ### Protection
-- **Chiffrement** : Toutes les données sensibles sont chiffrées
-- **Tatouage** : Les logs sont protégés contre la falsification
-- **Local** : Aucune donnée n'est envoyée à des tiers
 
-### Droits RGPD
-- **Droit d'accès** : Consultez vos données dans l'onglet Administration
-- **Droit de suppression** : Supprimez un utilisateur (irréversible)
-- **Droit de modification** : Modifiez les autorisations
+- **Encryption:** All sensitive data is encrypted.
+- **Watermarking:** Logs are protected against tampering.
+- **Local processing:** No data is sent to third parties.
 
-### Sauvegarde de la clé de chiffrement
+### GDPR Rights
 
-⚠️ **CRITIQUE** : Sauvegardez `data/encryption.key` en lieu sûr!
+- **Right of access:** View your data through the Administration tab.
+- **Right to erasure:** Delete a user (irreversible).
+- **Right to rectification:** Modify user permissions.
 
-Sans cette clé, vous ne pourrez plus déchiffrer vos données.
+### Encryption Key Backup
+
+⚠️ **CRITICAL:** Store `data/encryption.key` in a secure location.
+
+Without this key, encrypted data can no longer be decrypted.
 
 ```bash
-# Copier la clé sur une clé USB
-copy data\encryption.key E:\backup_cle_chiffrement.key
+# Copy the key to a USB drive
+copy data\encryption.key E:\backup_encryption_key.key
 
-# Ou sur OneDrive
-copy data\encryption.key %USERPROFILE%\OneDrive\backup_cle_chiffrement.key
+# Or to OneDrive
+copy data\encryption.key %USERPROFILE%\OneDrive\backup_encryption_key.key
 ```
 
 ## 🧪 Tests
 
 ```bash
-# Test complet du système
+# Run the complete system test
 python tests/test_complet.py
 ```
 
-## ❓ Dépannage
+## ❓ Troubleshooting
 
-### La caméra ne fonctionne pas
-- Vérifiez qu'aucune autre application n'utilise la caméra
-- Essayez de changer l'index de la caméra dans le code (0, 1, 2...)
+### The Camera Does Not Work
 
-### Le visage n'est pas détecté
-- Améliorez l'éclairage
-- Regardez directement la caméra
-- Ajustez les paramètres de détection dans `config/settings.py`
+- Make sure no other application is using the camera.
+- Try changing the camera index in the code (`0`, `1`, `2`, etc.).
 
-### La reconnaissance échoue
-- Réentraînez le modèle (onglet Administration)
-- Ajustez `RECOGNITION_THRESHOLD` (plus bas = plus permissif)
-- Vérifiez que vous avez au moins 50 images par utilisateur
+### The Face Is Not Detected
 
-### Erreur SMTP
-- Vérifiez votre connexion Internet
-- Utilisez un mot de passe d'application (pas votre mot de passe Gmail)
-- Activez la 2FA sur votre compte Gmail
+- Improve the lighting.
+- Look directly at the camera.
+- Adjust the detection parameters in `config/settings.py`.
 
-## 📝 Licence
+### Face Recognition Fails
 
-Ce projet est fourni à des fins éducatives.
+- Retrain the model from the Administration tab.
+- Adjust `RECOGNITION_THRESHOLD` (lower = more permissive).
+- Make sure you have at least 50 images per user.
+
+### SMTP Error
+
+- Check your Internet connection.
+- Use an App Password instead of your regular Gmail password.
+- Make sure 2FA is enabled on your Gmail account.
+
+## 📝 License
+
+This project is provided for **educational purposes only**.
 
 
